@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+
+// for code mirror, see https://github.com/TypeCtrl/ngx-codemirror
+@import "~codemirror/lib/codemirror.css";
+@import "~codemirror/theme/neat.css";
+
+// necessary for angular material
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html {
+    background-color: #efefef;
+    font-family: sans-serif;
+}
+
+.vis-timeline {
+    background-color: white;
+}
+
+#divSyntaxError {
+    margin: 5px;
+    background-color: #ffe0e0;
+    border: 1px solid red;
+    white-space: pre-line;  /* so I can use line breaks in error messages */
+}
+
+@media only screen and (min-width: 600px) {
+    html {
+        margin-left: 3em;
+        margin-right: 3em;
+    }
+}

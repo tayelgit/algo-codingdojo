@@ -1,0 +1,10 @@
+property:
+  kat1:
+    - room11
+
+reservations:
+  res1-2_room11:
+    kat: kat1
+    from: 2020-01-01
+    to: 2020-01-05
+    

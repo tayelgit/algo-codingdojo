@@ -1,0 +1,23 @@
+property:
+  kat1:
+    - room11
+  kat2:
+    - room21
+
+reservations:
+  res1-2_kat1:
+    kat: kat1
+    from: 2020-01-01
+    to: 2020-01-02
+  res2-3_kat1:
+    kat: kat1
+    from: 2020-01-02
+    to: 2020-01-03
+  res1-2_kat2:
+    kat: kat2
+    from: 2020-01-01
+    to: 2020-01-02
+  res2-3_kat2:
+    kat: kat2
+    from: 2020-01-02
+    to: 2020-01-03

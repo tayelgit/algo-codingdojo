@@ -1,0 +1,55 @@
+<div id="divInput">
+    <h2>Input</h2>
+    <smapalgo-algo-yaml-input></smapalgo-algo-yaml-input>
+</div>
+<!-- <button (click)="normalize()">normalize</button> -->
+<div id="divOrig">
+    <h2>Orig</h2>
+    <smapalgo-algo-gui-vis 
+        [propertyObservable]="origProperty$" 
+        [reservationsObservable]="origReservations$"
+    ></smapalgo-algo-gui-vis>
+</div>
+
+<div id="divOptimized">
+    <h2>Optimized <button (click)="optimize()">Optimize</button></h2>
+    
+    <!-- score + explanation -->
+    <mat-expansion-panel *ngIf="showOptimizerResult">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Score: {{(evaluationResult$ | async)?.score | number}}
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div *ngFor="let logLine of (evaluationResult$ | async)?.log">
+            {{ logLine }}
+        </div>
+    </mat-expansion-panel>
+
+    <!-- show optimizer error messages -->
+    <div 
+        #divSyntaxError 
+        id="divSyntaxError"
+        [hidden]="optimizerError==null"
+    >{{optimizerError}}</div>
+
+    <!-- timelines -->
+    <div *ngIf="showOptimizerResult">
+        <h3>Sucessful</h3>
+        <smapalgo-algo-gui-vis 
+            [propertyObservable]="origProperty$"
+            [reservationsObservable]="successfulReservations$">
+        </smapalgo-algo-gui-vis>
+
+        <div [hidden]="(problematicReservations$ | async)?.length === 0">
+            <h3>Problematic</h3>
+            <smapalgo-algo-gui-vis
+                [propertyObservable]="origProperty$"
+                [reservationsObservable]="problematicReservations$">
+            </smapalgo-algo-gui-vis>
+        </div>
+    </div>
+</div>
+
+
+

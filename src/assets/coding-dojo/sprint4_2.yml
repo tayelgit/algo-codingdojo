@@ -1,0 +1,46 @@
+property:
+  kat1:
+    - room11
+    - room12
+  kat2:
+    - room21
+    - room22
+
+reservations:
+  res1-3_kat1_room12:
+    kat: kat1
+    room: room12
+    from: 2020-01-01
+    to: 2020-01-03
+  res2-4_kat1:
+    kat: kat1
+    from: 2020-01-02
+    to: 2020-01-04
+  res1-2_kat1:
+    kat: kat1
+    from: 2020-01-01
+    to: 2020-01-02
+  res1-2_kat2_room22:
+    kat: kat2
+    room: room22
+    from: 2020-01-01
+    to: 2020-01-02
+  res4-5_kat2_room21:
+    kat: kat2
+    room: room21
+    from: 2020-01-04
+    to: 2020-01-05
+  res2-4_kat2:
+    kat: kat2
+    from: 2020-01-02
+    to: 2020-01-04
+  res1-3_kat2_room21:
+    kat: kat2
+    room: room21
+    from: 2020-01-01
+    to: 2020-01-03
+  res3-5_kat2_room22:
+    kat: kat2
+    room: room22
+    from: 2020-01-03
+    to: 2020-01-05

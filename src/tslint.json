@@ -1,0 +1,18 @@
+{
+    "extends": "../tslint.json",
+    "rules": {
+        "directive-selector": [
+            true,
+            "attribute",
+            "smapalgo",
+            "camelCase"
+        ],
+        "component-selector": [
+            true,
+            "element",
+            "smapalgo",
+            "kebab-case"
+        ],
+        "max-line-length": false
+    }
+}

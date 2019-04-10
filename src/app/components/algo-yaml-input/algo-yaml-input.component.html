@@ -1,0 +1,33 @@
+<!-- 
+    CODE MIRROR
+    test themes:    https://codemirror.net/demo/theme.html#neat
+    languages:      https://codemirror.net/mode/
+-->
+<mat-form-field>
+    <mat-select [(value)]="yamlInputFile" (selectionChange)="inputFileSelected()">
+        <mat-option *ngFor="let file of yamlFiles" [value]="file">
+        {{file}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
+<ngx-codemirror #codeEditor
+  [(ngModel)]="yamlContent" 
+  [options]="{
+    lineNumbers: true,
+    theme: 'neat',      
+    mode: 'YAML'        
+  }"
+></ngx-codemirror>
+
+
+<!-- Display Errors -->
+<div 
+  #divSyntaxError 
+  id="divSyntaxError"
+  [hidden]="syntaxErrorOrig==null"
+>{{syntaxErrorOrig}}</div>
+
+
+<!-- update button -->
+<button (click)="update()">Update</button>
