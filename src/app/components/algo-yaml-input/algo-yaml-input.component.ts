@@ -31,14 +31,15 @@ export class AlgoYamlInputComponent implements OnInit {
   codemirrorComponent: CodemirrorComponent;
 
   yamlFiles = [
-   'sprint1_1.yml',
-   'sprint1_2.yml',
-   'sprint2_1.yml',
-   'sprint3_1.yml',
-   'sprint2_2.yml',
-   'sprint4_1.yml',
-   'sprint4_2.yml',
-   AlgoYamlInputComponent.RANDOM
+    'sprint1_1.yml',
+    'sprint1_2.yml',
+    'sprint2_1.yml',
+    'sprint2_2.yml',
+    'sprint3_1.yml',
+    'sprint3_2.yml',
+    'sprint4_1.yml',
+    'sprint4_2.yml',
+    AlgoYamlInputComponent.RANDOM
   ];
 
   // first is selected at start
