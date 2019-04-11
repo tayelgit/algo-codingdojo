@@ -1,4 +1,4 @@
-import { LocalDateTime, nativeJs } from 'js-joda';
+import { LocalDateTime, nativeJs, ChronoUnit } from 'js-joda';
 import { ReservationUtils } from './../../domain/reservation/reservation-utils';
 import { Room } from './../../domain/immo/room';
 import { CodemirrorComponent } from '@ctrl/ngx-codemirror';
@@ -13,6 +13,7 @@ import { HttpClient } from '@angular/common/http';
 
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/yaml/yaml';
+import { RandomReservationsGenerator } from 'src/app/algo/RandomReservationsGenerator';
 
 @Component({
   selector: 'smapalgo-algo-yaml-input',
@@ -21,8 +22,7 @@ import 'codemirror/mode/yaml/yaml';
 })
 export class AlgoYamlInputComponent implements OnInit {
 
-  // @ViewChild('taYamlInput')
-  // txtArea: ElementRef;
+  private static RANDOM = 'Random Reservations';
 
   @ViewChild('divSyntaxError')
   divError: ElementRef;
@@ -37,11 +37,13 @@ export class AlgoYamlInputComponent implements OnInit {
    'sprint3_1.yml',
    'sprint2_2.yml',
    'sprint4_1.yml',
-   'sprint4_2.yml'
+   'sprint4_2.yml',
+   AlgoYamlInputComponent.RANDOM
   ];
 
   // first is selected at start
-  yamlInputFile = this.yamlFiles[0];
+  // yamlInputFile = this.yamlFiles[0];
+  yamlInputFile = AlgoYamlInputComponent.RANDOM;
 
   yamlContent: string;
 
@@ -75,12 +77,25 @@ export class AlgoYamlInputComponent implements OnInit {
       return;
     }
 
-    this.http.get('/assets/coding-dojo/' + this.yamlInputFile, {responseType: 'text'}).subscribe(resp => {
-      this.yamlContent = resp;
-      this.update();
-    });
-
+    if (this.yamlInputFile === AlgoYamlInputComponent.RANDOM) {
+      // generate a random yaml string
+      try {
+        this.yamlContent = RandomReservationsGenerator.getRandomReservationsYaml();
+        this.update();
+      } catch (e) {
+          console.error(e);
+          this.syntaxErrorOrig = e;
+          return;
+      }
+    } else {
+      // read from yaml file
+      this.http.get('/assets/coding-dojo/' + this.yamlInputFile, {responseType: 'text'}).subscribe(resp => {
+        this.yamlContent = resp;
+        this.update();
+      });
+    }
   }
+
 
   update(): void {
     if (!this.yamlContent || this.yamlContent.length === 0) {
