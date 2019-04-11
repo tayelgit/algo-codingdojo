@@ -7,18 +7,6 @@ Run `ng serve --open`. This should open a browser at  `http://localhost:4200/`. 
 ## Implement your optimizer
 Implement optimizeInternal() in src\app\algo\test-optimizer.ts
 
-## Switch between test cases
-At the moment you have to un/comment one of the test yml files in the src/app/components/algo-yaml-input/algo-yaml-input.component.ts file
-
-~~~~
-  yamlInputFile = '/assets/findRoom1.yml';
-  // yamlInputFile = '/assets/findRoom2.yml';
-  // yamlInputFile = '/assets/findRoom3.yml';
-  // yamlInputFile = '/assets/findRoom4.yml';
-  // yamlInputFile = '/assets/findRoom5.yml';
-  // yamlInputFile = '/assets/test_2kat.yml';
-~~~~
-
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
